@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ivy Wang | Talent Acquisition & Career Services</title>
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --soft: #eff6ff;
+      --shadow: 0 12px 30px rgba(17, 24, 39, 0.08);
+      --radius: 20px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 248, 250, 0.82);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 34px 0 24px;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-banner {
+      height: 180px;
+      background:
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.2), transparent 18%),
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12), transparent 16%),
+        linear-gradient(135deg, #0f172a 0%, #1d4ed8 48%, #0f172a 100%);
+      position: relative;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, transparent 0 25%, rgba(255,255,255,0.11) 25% 34%, transparent 34% 60%, rgba(255,255,255,0.08) 60% 70%, transparent 70% 100%);
+      mix-blend-mode: screen;
+    }
+
+    .hero-content {
+      padding: 0 28px 30px;
+      position: relative;
+    }
+
+    .avatar {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dbeafe, #e5e7eb);
+      border: 5px solid #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      margin-top: -66px;
+      display: grid;
+      place-items: center;
+      color: #1e3a8a;
+      font-size: 2.2rem;
+      font-weight: 800;
+      overflow: hidden;
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      margin-top: 16px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .chip {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #374151;
+      font-size: 0.92rem;
+      border: 1px solid #eceff3;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      background: #f9fafb;
+    }
+
+    .side-panel {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+    }
+
+    .side-panel h3,
+    .section h2 {
+      margin: 0 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .side-panel p,
+    .section-intro {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .quick-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: #374151;
+    }
+
+    .quick-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: 0 8px 24px rgba(17, 24, 39, 0.04);
+    }
+
+    .section + .section {
+      margin-top: 20px;
+    }
+
+    .service-grid,
+    .testimonial-grid,
+    .mini-cards {
+      display: grid;
+      gap: 16px;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 18px;
+    }
+
+    .service-card,
+    .mini-card,
+    .testimonial {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #fff, #fbfdff);
+    }
+
+    .service-card h3,
+    .mini-card h3,
+    .testimonial h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+    }
+
+    .service-card p,
+    .mini-card p,
+    .testimonial p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: #dbeafe;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 38px;
+      margin-bottom: 22px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 7px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid var(--accent);
+    }
+
+    .timeline-meta {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .timeline p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      background: var(--soft);
+      border: 1px solid #dbeafe;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .contact-box {
+      background: linear-gradient(180deg, #eff6ff, #ffffff);
+      border: 1px solid #dbeafe;
+    }
+
+    .footer {
+      padding: 34px 0 60px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-top,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-banner {
+        height: 140px;
+      }
+
+      .hero-content {
+        padding: 0 18px 22px;
+      }
+
+      .avatar {
+        width: 104px;
+        height: 104px;
+        margin-top: -52px;
+        font-size: 1.8rem;
+      }
+
+      .section,
+      .side-panel {
+        padding: 20px;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Ivy Wang</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#results">Results</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="hero container">
+    <section class="hero-card">
+      <div class="hero-banner"></div>
+      <div class="hero-content">
+        <div class="avatar">IW</div>
+
+        <div class="hero-top">
+          <div>
+            <div class="eyebrow">Talent Acquisition • Recruiting Support • Career Services</div>
+            <h1>Helping teams hire faster and candidates present themselves better.</h1>
+            <p class="subtitle">
+              Recruiter and client-facing professional with experience across hiring coordination, full-cycle recruiting support,
+              resume optimization, and stakeholder communication. Available for recruiting support, resume review, and job-search-focused services.
+            </p>
+
+            <div class="chips">
+              <span class="chip">ATS-optimized resumes</span>
+              <span class="chip">Recruiting support</span>
+              <span class="chip">Interview coordination</span>
+              <span class="chip">Healthcare & biotech exposure</span>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#contact">Work with me</a>
+              <a class="btn btn-secondary" href="#services">View services</a>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <h3>Quick snapshot</h3>
+            <p>Focused on practical, clear, and results-driven support for employers and job seekers.</p>
+            <ul class="quick-list">
+              <li>Based in the New York / New Jersey area</li>
+              <li>Open to full-time opportunities</li>
+              <li>Available for freelance resume and recruiting support</li>
+              <li>Professional, simple, candidate-friendly communication style</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div>
+        <section id="about" class="section">
+          <h2>About</h2>
+          <p class="section-intro">
+            I partner with hiring teams and candidates on the parts of the process that matter most: clear communication,
+            strong presentation, efficient coordination, and practical hiring support. My background includes recruiting,
+            applicant-facing communication, operations support, and quality-focused administrative work.
+          </p>
+          <div class="mini-cards">
+            <div class="mini-card">
+              <h3>What I do</h3>
+              <p>
+                I support recruiting workflows, improve candidate materials, and help translate experience into stronger positioning for the job market.
+              </p>
+            </div>
+            <div class="mini-card">
+              <h3>Who I work with</h3>
+              <p>
+                Employers who need structured recruiting help, and job seekers who want polished resumes, clearer profiles, and more confident applications.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="section">
+          <h2>Services</h2>
+          <p class="section-intro">Simple, practical support tailored for job search or hiring needs.</p>
+          <div class="service-grid">
+            <article class="service-card">
+              <h3>Resume Writing</h3>
+              <p>Rewrite and strengthen resumes for clarity, impact, and ATS alignment.</p>
+            </article>
+            <article class="service-card">
+              <h3>Resume Review</h3>
+              <p>Direct feedback on wording, structure, achievements, and relevance to target roles.</p>
+            </article>
+            <article class="service-card">
+              <h3>LinkedIn Profile Polish</h3>
+              <p>Improve your headline, about section, and experience bullets for better positioning.</p>
+            </article>
+            <article class="service-card">
+              <h3>Recruiting Support</h3>
+              <p>Help with interview coordination, candidate communication, screening support, and workflow organization.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="experience" class="section">
+          <h2>Experience Highlights</h2>
+          <p class="section-intro">A concise view of relevant experience without naming current employers.</p>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-meta">Recent</div>
+              <h3>Talent Acquisition Partner</h3>
+              <p>
+                Supported full-cycle recruiting for specialized lab and operational roles, partnering with stakeholders and coordinating hiring processes in a fast-moving environment.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-meta">Previous</div>
+              <h3>Medical Interpreter</h3>
+              <p>
+                Managed high-volume communication with accuracy and professionalism, helping clients navigate time-sensitive conversations clearly and efficiently.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-meta">Previous</div>
+              <h3>Benefits & Operations Support</h3>
+              <p>
+                Worked on detail-oriented processing, quality checks, and administrative workflows with a strong focus on accuracy and compliance.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-meta">Earlier</div>
+              <h3>Recruitment Coordination & Client Support</h3>
+              <p>
+                Coordinated candidate pipelines, project timelines, and communication across stakeholders while supporting broader business and research-related operations.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section id="results" class="section">
+          <h2>Results</h2>
+          <p class="section-intro">Use the numbers below as placeholders or replace them with your preferred metrics.</p>
+          <div class="stats">
+            <div class="stat">
+              <strong>5+</strong>
+              <span>roles closed in a fast hiring cycle</span>
+            </div>
+            <div class="stat">
+              <strong>100+</strong>
+              <span>participants or candidates coordinated in prior work</span>
+            </div>
+            <div class="stat">
+              <strong>4.8/5</strong>
+              <span>client satisfaction example metric</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Why people work with me</h2>
+          <div class="testimonial-grid">
+            <div class="testimonial">
+              <h3>Clear communication</h3>
+              <p>I keep communication professional, concise, and easy to act on for both clients and candidates.</p>
+            </div>
+            <div class="testimonial">
+              <h3>Process-minded</h3>
+              <p>I am comfortable managing details, timelines, and follow-through in structured workflows.</p>
+            </div>
+            <div class="testimonial">
+              <h3>Candidate-focused</h3>
+              <p>I understand how to present experience in a way that feels strong, readable, and credible.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="section contact-box">
+          <h2>Contact</h2>
+          <p class="section-intro">
+            Looking for a recruiter, recruiting coordinator, people operations role, or resume support? Let’s connect.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:hello@deraritan.com">Email me</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/ivy-sijia-wang/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn btn-secondary" href="https://github.com/isw17r" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Ivy Wang. Built for personal branding, job search, and service-based use.
+    </div>
+  </footer>
+</body>
+</html>
